@@ -79,7 +79,9 @@
             const slug = document.querySelector('#slug');
 
             name.addEventListener('change', function() {
-                fetch('/register/checkSlug?name=' + name.value)
+                fetch('/register/checkSlug?name=' + name.value,{
+                    credentials: 'same-origin'
+                })
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
             });
