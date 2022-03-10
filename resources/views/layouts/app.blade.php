@@ -8,9 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- icon --}}
+    {{-- <link rel="icon" href="{{ asset('images/logo smp.jpg') }}" type="image/jpg" sizes="16x16"> --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
+    <script src="{{ asset('notyf/notyf.min.js') }}"></script>
+    <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
+    <script src="{{ asset('feather-icons/dist/feather.min.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,13 +25,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('notyf/notyf.min.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
         @include('partials.navbar')
-        <main class="py-4">
+        @include('partials.search')
+        <main class="py-4 min-vh-100">
             @yield('content')
         </main>
+        @include('partials.footer')
     </div>
 </body>
 </html>
