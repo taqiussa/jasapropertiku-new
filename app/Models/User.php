@@ -19,8 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'photo',
+        'gender',
         'email',
         'password',
+        'slug',
+        'birthplace',
+        'birthdate',
+        'address',
+        'province',
+        'city',
+        'district',
+        'village',
+        'whatsapp',
     ];
 
     /**
@@ -41,4 +52,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected $with = [
+        'indonesiaProvince',
+        'indonesiaCity',
+        'indonesiaDistrict',
+        'indonesiaVillage',
+        'posts'
+    ];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+                ]      
+            ];
+    }
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    public function indonesiaProvince(){
+        return $this->hasOne(IndonesiaProvince::class,'code','province');
+    }
+    public function indonesiaCity(){
+        return $this->hasOne(IndonesiaCity::class,'code','city');
+    }
+    public function indonesiaDistrict(){
+        return $this->hasOne(IndonesiaDistrict::class,'code','district');
+    }
+    public function indonesiaVillage(){
+        return $this->hasOne(IndonesiaVillage::class,'code','village');
+    }
 }

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,14 +29,20 @@
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('notyf/notyf.min.css') }}" rel="stylesheet" />
 </head>
+
 <body>
     <div id="app">
         @include('partials.navbar')
-        @include('partials.search')
+        <!-- Page header with logo and tagline-->
+        @if (Request::routeIs('login') || Request::routeIs('register') || Request::routeIs('user.*') || Request::routeIs('posts.create'))
+        @else
+            @include('partials.search')
+        @endif
         <main class="py-4 min-vh-100">
             @yield('content')
         </main>
         @include('partials.footer')
     </div>
 </body>
+
 </html>
