@@ -21,6 +21,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/register/checkSlug', [MyUserController::class, 'checkSlug']);
 Route::resource('user', MyUserController::class);
 Route::resource('posts', PostController::class);

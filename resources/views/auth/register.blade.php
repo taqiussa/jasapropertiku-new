@@ -16,8 +16,6 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                <input id="slug" type="hidden" class="form-control @error('slug') is-invalid @enderror"
-                                    name="slug" value="{{ old('slug') }}" required autocomplete="slug" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,17 +72,5 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        
-    <script>
-        const name = document.querySelector('#name');
-        const slug = document.querySelector('#slug');
-        name.addEventListener('change', function() {
-            fetch('/register/checkSlug?name=' + name.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
-        });
-        </script>
-    @endpush
 </div>
 @endsection
