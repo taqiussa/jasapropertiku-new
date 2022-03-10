@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Cviebrock\EloquentSluggable\Services\SlugService;
 class MyUserController extends Controller
 {
     /**
@@ -80,5 +80,9 @@ class MyUserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(User::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }

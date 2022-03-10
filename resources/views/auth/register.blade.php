@@ -74,14 +74,12 @@
             </div>
         </div>
     </div>
-       <script>
+    <script>
             const name = document.querySelector('#name');
             const slug = document.querySelector('#slug');
 
             name.addEventListener('change', function() {
-                fetch('/register/checkSlug?name=' + name.value,{
-                    credentials: 'same-origin'
-                })
+                fetch('/register/checkSlug?name=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
             });
