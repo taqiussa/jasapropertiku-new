@@ -21,6 +21,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/register/checkSlug', [UserController::class, 'checkSlug']);
 Route::resource('user', MyUserController::class);
 Route::resource('posts', PostController::class);
