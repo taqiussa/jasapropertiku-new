@@ -74,14 +74,17 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        
     <script>
-            const name = document.querySelector('#name');
-            const slug = document.querySelector('#slug');
-            name.addEventListener('change', function() {
-                fetch('/register/checkSlug?name=' + name.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-            });
+        const name = document.querySelector('#name');
+        const slug = document.querySelector('#slug');
+        name.addEventListener('change', function() {
+            fetch('/register/checkSlug?name=' + name.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+        });
         </script>
+    @endpush
 </div>
 @endsection
