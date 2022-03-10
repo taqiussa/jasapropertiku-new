@@ -77,7 +77,6 @@
     <script>
             const name = document.querySelector('#name');
             const slug = document.querySelector('#slug');
-
             name.addEventListener('change', function() {
                 fetch('/register/checkSlug?name=' + name.value)
                 .then(response => response.json())
