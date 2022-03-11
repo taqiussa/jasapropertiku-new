@@ -39,7 +39,7 @@
         @else
             @include('partials.search')
         @endif
-        <main class="py-4 min-vh-100">
+        <main class="container py-5 min-vh-100">
             @yield('content')
         </main>
         @include('partials.footer')

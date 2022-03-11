@@ -17,7 +17,7 @@ use App\Http\Controllers\MyUserController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('post.posts');
 });
 
 Auth::routes();
