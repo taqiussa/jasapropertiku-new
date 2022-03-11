@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select disabled class="form-select" id="floatingKecamatan" aria-label="Floating label select example">
-                        <option value="" selected></option>
+                        <option value="" selected>{{ auth()->user()->indonesiaDistrict->name ?? '' }}</option>
                     </select>
                     <label for="floatingKecamatan">Kecamatan</label>
                 </div>

@@ -34,11 +34,11 @@
             Buat Iklan
         </a>
         <a onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" 
+                    document.getElementById('logout-forms').submit();" 
             class="list-group-item list-group-item-action" 
             role="button">
             {{ __('Logout') }}
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            <form id="logout-forms" action="{{ route('logout') }}" method="POST">
             @csrf
             </form>
         </a>
