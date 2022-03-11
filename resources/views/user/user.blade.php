@@ -37,25 +37,25 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select disabled class="form-select" id="floatingProvinsi" aria-label="Floating label select example">
-                        <option value="" selected></option>
+                        <option value="" selected>{{ Auth::user()->indonesiaProvince->name }}</option>
                     </select>
                     <label for="floatingProvinsi">Provinsi</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select disabled class="form-select" id="floatingKota" aria-label="Floating label select example">
-                        <option value="" selected></option>
+                        <option value="" selected>{{ Auth::user()->indonesiaCity->name }}</option>
                     </select>
                     <label for="floatingKota">Kota</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select disabled class="form-select" id="floatingKecamatan" aria-label="Floating label select example">
-                        <option value="" selected></option>
+                        <option value="" selected>{{ Auth::user()->indonesiaDistrict->name }}</option>
                     </select>
                     <label for="floatingKecamatan">Kecamatan</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select disabled class="form-select" id="floatingDesa" aria-label="Floating label select example">
-                        <option value="" selected></option>
+                        <option value="" selected>{{ Auth::user()->indonesiaVillage->name }}</option>
                     </select>
                     <label for="floatingDesa">Desa</label>
                 </div>
