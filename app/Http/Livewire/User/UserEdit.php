@@ -7,6 +7,7 @@ use App\Models\IndonesiaDistrict;
 use App\Models\IndonesiaProvince;
 use App\Models\IndonesiaVillage;
 use App\Models\User;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -72,7 +73,7 @@ class UserEdit extends Component
             $foto = auth()->user()->photo;
         }else{
             $this->validate();
-            $foto = $this->photo->store('photos');
+            $foto = $this->photo->store('photos', 'public');
             Storage::delete(auth()->user()->photo);
         }    
         $user->find(auth()->user()->id)->update([

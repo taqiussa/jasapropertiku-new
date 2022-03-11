@@ -23,7 +23,7 @@
                         @if ($photo)
                             <img src="{{ $photo->temporaryUrl() }}" alt="" class="img img-thumbnail">
                             @else
-                            <img src="{{ asset('storage/' . auth()->user()->photo) }}" alt="" class="img img-thumbnail">
+                            <img src="{{ asset(auth()->user()->photo) }}" alt="" class="img img-thumbnail">
                         @endif
                     </div>
                 @else

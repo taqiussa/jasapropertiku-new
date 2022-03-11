@@ -29,21 +29,18 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
+            <div class="d-flex">
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
-                        <li class="nav-item mx-1">
-                            <a class="btn btn-outline-warning" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
+                            <a class="btn btn-outline-warning mx-1" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                     @endif
 
                     @if (Route::has('register'))
-                        <li class="nav-item mx-1">
-                            <a class="btn btn-outline-light" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                            <a class="btn btn-outline-light mx-1" href="{{ route('register') }}">{{ __('Daftar') }}</a>
                     @endif
                 @else
+                <div class="navbar-nav ms-auto d-flex">
                     <li class="nav-item dropdown fs-5">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
@@ -64,8 +61,9 @@
                             </form>
                         </div>
                     </li>
+                </div>
                 @endguest
-            </ul>
+            </div>
         </div>
     </div>
 </nav>
