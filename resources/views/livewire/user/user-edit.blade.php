@@ -6,7 +6,7 @@
         </span>
     </div>
     <div class="card-body">
-        <form wire:submit.prevent="updateProfil">
+        <form wire:submit.prevent="updateProfil" enctype="multipart/form-data">
             <div class="mb-3 row">
                 <label class="form-label fs-5">Foto Profil</label>
                 @if (auth()->user()->photo)
@@ -23,7 +23,7 @@
                         @if ($photo)
                             <img src="{{ $photo->temporaryUrl() }}" alt="" class="img img-thumbnail">
                             @else
-                            <img src="{{ asset(auth()->user()->photo) }}" alt="" class="img img-thumbnail">
+                            <img src="{{ asset('store/app/'.auth()->user()->photo) }}" alt="" class="img img-thumbnail">
                         @endif
                     </div>
                 @else
