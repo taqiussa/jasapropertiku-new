@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\IndonesiaProvince;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaDistrict;
+use App\Models\IndonesiaVillage;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Sluggable;
