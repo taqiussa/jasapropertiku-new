@@ -10,10 +10,10 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
     protected $guarded = [];
-    protected $with = ['user'];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+    // protected $with = ['user'];
+    // public function user(){
+    //     return $this->belongsTo(User::class);
+    // }
     public function getRouteKeyName()
     {
         return 'slug';
@@ -22,7 +22,7 @@ class Post extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'title'
                 ]      
             ];
     }

@@ -20,14 +20,13 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->string('category');
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->string('rights');
             $table->string('certificate');
             $table->string('owner');
             $table->string('area');
             $table->string('location');
             $table->string('photo');
-            $table->string('others');
             $table->boolean('confirm');
             $table->string('status');
             $table->timestamps();

@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire\Post;
 
+use App\Models\Post;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
+    use WithFileUploads;
+    public $idPost;
     public $title;
-    public $slug;
     public $category;
     public $price;
     public $rights;
@@ -17,12 +20,8 @@ class CreatePost extends Component
     public $location;
     public $description;
     public $photo;
-    public $others;
-    public $confirm;
-    public $status;
     protected $rules = [
         'title' => 'required|string',
-        'slug' => 'required|string|unique',
         'category' => 'required|string',
         'price' => 'required|string',
         'rights' => 'required|string',
@@ -32,9 +31,50 @@ class CreatePost extends Component
         'location' => 'required|string',
         'description' => 'required|string',
         'photo' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4096',
-        'others' => 'required|string',
-        'status' => 'required|string',
     ];
+    public function updatedPrice(){
+        $this->price = intval(str_replace(".","",$this->price));
+        $this->price ? $this->price = number_format($this->price,0,",",".") : 0;
+    }
+    public function clearVar(){
+        $this->title = '';
+        $this->category = '';
+        $this->price = '';
+        $this->rights = '';
+        $this->certificate = '';
+        $this->owner = '';
+        $this->area = '';
+        $this->location = '';
+        $this->photo = '';
+        $this->description = '';
+    }
+    public function savePost(){
+        $this->resetErrorBag();
+        $this->validate();
+        $foto = $this->photo->store('posts');
+        $data = [
+            'user_id' => auth()->user()->id,
+            'title' => $this->title,
+            'category' => $this->category,
+            'price' => intval(str_replace(".","",$this->price)),
+            'rights' => $this->rights,
+            'certificate' => $this->certificate,
+            'owner' => $this->owner,
+            'area' => $this->area,
+            'location' => $this->location,
+            'description' => $this->description,
+            'photo' => $foto,
+            'confirm' => 0,
+            'status' => 'ready',
+        ];
+        Post::updateOrCreate(['id' => $this->idPost],$data);
+        $this->dispatchBrowserEvent('notyf:success',
+        [
+            'type' => 'success',
+            'message' => 'Berhasil Memasang Iklan',
+        ]);
+        $this->clearVar();
+    }
     public function render()
     {
         return view('livewire.post.create-post');
