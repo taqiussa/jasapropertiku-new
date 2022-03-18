@@ -14,7 +14,7 @@
             </div>
             <div class="card-body">
                 <div class="img my-2">
-                    <img src="{{ Storage::url(auth()->user()->photo) }}" alt="" class="img-thumbnail rounded-circle">
+                    <img src="{{ Storage::url('app/'.auth()->user()->photo) }}" alt="" class="img-thumbnail rounded-circle">
                 </div>
                 <div class="form-floating mb-3">
                     <input disabled value="{{ auth()->user()->name }}" type="text" class="form-control" id="floatingNama" placeholder="Nama Lengkap..."
