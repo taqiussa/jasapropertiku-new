@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('notyf/notyf.min.css') }}" rel="stylesheet" />
-    @stack('styles')
+    <livewire:styles />
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <!-- Page header with logo and tagline-->
         @if (Request::routeIs('login') || Request::routeIs('register') || Request::routeIs('user.*') || Request::routeIs('posts.create'))
         @else
-            @include('partials.search')
+            @livewire('search')
         @endif
         <main class="container py-5 min-vh-100">
             @yield('content')
@@ -43,8 +43,7 @@
     <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('feather-icons/dist/feather.min.js') }}"></script>
-    @stack('scripts')
-    
+    <livewire:scripts />
 </body>
 
 </html>

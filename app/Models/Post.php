@@ -10,9 +10,23 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
     protected $guarded = [];
-    // protected $with = ['user'];
-    // public function user(){
-    //     return $this->belongsTo(User::class);
+    public static function search($query, $category)
+    {
+        return empty($query) ? static::query()
+            : static::where('category',$category)->where('title', 'like', '%' . $query . '%');
+            
+    }
+    // public function scopeFilter($query, array $filters){
+    //     $query->when($filters['jual'] ?? false, fn($query, $jual) => 
+    //         $query->where('category', 'Jual')
+    //                 ->where('title', 'like', '%'.$jual.'%')
+    //                 ->orWhere('description', 'like', '%'.$jual.'%')
+    //     );
+    //     $query->when($filters['sewa'] ?? false, fn($query, $sewa) => 
+    //         $query->where('category', 'Sewa')
+    //                 ->where('title', 'like', '%'.$sewa.'%')
+    //                 ->orWhere('description', 'like', '%'.$sewa.'%')
+    //     );
     // }
     public function getRouteKeyName()
     {

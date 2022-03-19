@@ -22,6 +22,6 @@ Route::get('/', function () {
     return view('post.posts');
 });
 
-Auth::routes();
 Route::resource('user', MyUserController::class);
 Route::resource('posts', PostController::class);
+Auth::routes();
