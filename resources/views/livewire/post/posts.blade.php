@@ -17,7 +17,7 @@
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top"
-                                        src="{{ asset('storage/'.$post->photo) }}" alt="..." /></a>
+                                        src="{{ Storage::url('app/'.$post->photo) }}" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted d-flex mb-2">
                                         <span><i class=" fas fa-calendar-alt"></i>
@@ -39,7 +39,7 @@
                                             Rp. {{ number_format($post->price,0,'.','.')}}
                                     </h2>
                                     <p class="card-text"></p>
-                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->slug) }}">Details</a>
+                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->slug) }}">Detail</a>
                                 </div>
                             </div>
                         </div>
