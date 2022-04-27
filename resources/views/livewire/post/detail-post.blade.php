@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-between px-3 py-3">
-        <a role="button" class="btn btn-success" href="https://wa.me/62895329097688">Hubungi</a>
+        <a role="button" class="btn btn-success" href="https://wa.me/62895329097688" target="_blank">Hubungi</a>
         <a role="button" class="btn btn-secondary" href="{{ route('posts.index') }}">Kembali</a>
     </div>
 </div>
