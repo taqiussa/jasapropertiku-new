@@ -39,7 +39,7 @@
                                             Rp. {{ number_format($post->price,0,'.','.')}}
                                     </h2>
                                     <p class="card-text"></p>
-                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->slug) }}">Detail</a>
+                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->slug) }}">Details</a>
                                 </div>
                             </div>
                         </div>
