@@ -1,6 +1,6 @@
 <div>
     <div class="card">
-        <img class="card-img-top" src="{{ Storage::url($post->photo) }}" alt="detail image">
+        <img class="card-img-top" src="{{ Storage::url('app/'.$post->photo) }}" alt="detail image">
         <div class="card-body">
             <h4 class="card-title">{{ $post->title }}</h4>
             <p class="card-text"><b>Nama Penjual : </b>{{ $post->user->name }}</p>
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-between px-3 py-3">
-        <a role="button" class="btn btn-success" href="#">Hubungi</a>
+        <a role="button" class="btn btn-success" href="https://wa.me/62895329097688">Hubungi</a>
         <a role="button" class="btn btn-secondary" href="{{ route('posts.index') }}">Kembali</a>
     </div>
 </div>
