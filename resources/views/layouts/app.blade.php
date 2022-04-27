@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('notyf/notyf.min.css') }}" rel="stylesheet" />
+    
     <livewire:styles />
 </head>
 
@@ -30,7 +31,7 @@
         @if (Request::routeIs('login') || Request::routeIs('register') || Request::routeIs('user.*') || Request::routeIs('posts.create'))
         @else
             @livewire('search')
-        @endif
+            @endif
         <main class="container py-5 min-vh-100">
             @yield('content')
         </main>
@@ -43,6 +44,7 @@
     <script src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('feather-icons/dist/feather.min.js') }}"></script>
+    
     <livewire:scripts />
 </body>
 

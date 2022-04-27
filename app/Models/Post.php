@@ -28,6 +28,9 @@ class Post extends Model
     //                 ->orWhere('description', 'like', '%'.$sewa.'%')
     //     );
     // }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';
