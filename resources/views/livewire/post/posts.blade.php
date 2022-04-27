@@ -17,7 +17,7 @@
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top"
-                                        src="{{ Storage::url('posts/'.$post->photo) }}" alt="..." /></a>
+                                        src="{{ asset('storage/'.$post->photo) }}" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted d-flex mb-2">
                                         <span><i class=" fas fa-calendar-alt"></i>
