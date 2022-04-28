@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MyUserController;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,4 +22,6 @@ Route::get('/', function () {
 
 Route::resource('user', MyUserController::class);
 Route::resource('posts', PostController::class);
+Route::get('/admin', [AdminController::class,'index'])->name('admin');
+Route::get('/admin/{slug}', [AdminController::class,'show'])->name('admin.detail');
 Auth::routes();

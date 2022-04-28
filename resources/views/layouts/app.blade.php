@@ -28,10 +28,10 @@
     <div id="app">
         @include('partials.navbar')
         <!-- Page header with logo and tagline-->
-        @if (Request::routeIs('login') || Request::routeIs('register') || Request::routeIs('user.*') || Request::routeIs('posts.create'))
+        @if (Request::routeIs('login') || Request::routeIs('register') || Request::routeIs('user.*') || Request::routeIs('posts.create') || Request::routeIs('admin') || Request::routeIs('admin.*'))
         @else
             @livewire('search')
-            @endif
+        @endif
         <main class="container py-5 min-vh-100">
             @yield('content')
         </main>

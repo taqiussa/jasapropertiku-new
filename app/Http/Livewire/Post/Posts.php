@@ -23,19 +23,19 @@ class Posts extends Component
         $this->searchs = $inputan;
         $this->sewa = '';
         $this->category = 'Jual';
-        $this->counts = Post::search($this->searchs, $this->category)->count();
+        $this->counts = Post::search($this->searchs, $this->category)->whereConfirm(1)->count();
     }
     public function searchSewa($inputan){
         $this->searchs = $inputan;
         $this->jual = '';
         $this->category = 'Sewa';
-        $this->counts = Post::search($this->searchs, $this->category)->count();
+        $this->counts = Post::search($this->searchs, $this->category)->whereConfirm(1)->count();
     }
     public function render()
     {
         return view('livewire.post.posts', 
                 [
-                    'posts' => Post::search($this->searchs, $this->category)->latest()->paginate(6),
+                    'posts' => Post::search($this->searchs, $this->category)->whereConfirm(1)->latest()->paginate(6),
                 ]);
     }
 }

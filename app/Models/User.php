@@ -12,9 +12,11 @@ use App\Models\IndonesiaProvince;
 use App\Models\IndonesiaCity;
 use App\Models\IndonesiaDistrict;
 use App\Models\IndonesiaVillage;
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Sluggable;
+    use HasApiTokens, HasFactory, Notifiable, Sluggable, HasRoles;
 
     /**
      * The attributes that are mass assignable.

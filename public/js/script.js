@@ -27,3 +27,29 @@ window.addEventListener('swal:notif', event => {
         icon: event.detail.type,
     });
 });
+window.addEventListener('confirm:delete', event => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete",
+        cancelButtonText: "Cancel",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.livewire.emit('delete', event.detail.id);
+        }
+    });
+});
+window.addEventListener('confirm:confirm', event => {
+    Swal.fire({
+        title: 'Anda Yakin?',
+        text: "Postingan Ini akan di konfirmasi",
+        showCancelButton: true,
+        confirmButtonText: "Ya, Konfirmasi",
+        cancelButtonText: "Batal",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.livewire.emit('confirm', event.detail.id);
+        }
+    });
+});
