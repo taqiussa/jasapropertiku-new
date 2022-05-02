@@ -32,11 +32,13 @@ class CreatePost extends Component
         'description' => 'required|string',
         'photo' => 'image|mimes:jpg,jpeg,png,svg,gif|max:4096',
     ];
-    public function updatedPrice(){
-        $this->price = intval(str_replace(".","",$this->price));
-        $this->price ? $this->price = number_format($this->price,0,",",".") : 0;
+    public function updatedPrice()
+    {
+        $this->price = intval(str_replace(".", "", $this->price));
+        $this->price ? $this->price = number_format($this->price, 0, ",", ".") : 0;
     }
-    public function clearVar(){
+    public function clearVar()
+    {
         $this->title = '';
         $this->category = '';
         $this->price = '';
@@ -48,32 +50,43 @@ class CreatePost extends Component
         $this->photo = '';
         $this->description = '';
     }
-    public function savePost(){
-        $this->resetErrorBag();
-        $this->validate();
-        $foto = $this->photo->store('posts');
-        $data = [
-            'user_id' => auth()->user()->id,
-            'title' => $this->title,
-            'category' => $this->category,
-            'price' => intval(str_replace(".","",$this->price)),
-            'rights' => $this->rights,
-            'certificate' => $this->certificate,
-            'owner' => $this->owner,
-            'area' => $this->area,
-            'location' => $this->location,
-            'description' => $this->description,
-            'photo' => $foto,
-            'confirm' => 0,
-            'status' => 'ready',
-        ];
-        Post::updateOrCreate(['id' => $this->idPost],$data);
-        $this->dispatchBrowserEvent('notyf:success',
-        [
-            'type' => 'success',
-            'message' => 'Berhasil Memasang Iklan',
-        ]);
-        $this->clearVar();
+    public function savePost()
+    {
+        if (!auth()->user()) {
+            $this->dispatchBrowserEvent('swal:notif', [
+                'type' => 'error',
+                'title' => 'Anda Belum Login',
+                'text' => 'Silahkan Login untuk Melanjutkan'
+            ]);
+        } else {
+            $this->resetErrorBag();
+            $this->validate();
+            $foto = $this->photo->store('posts');
+            $data = [
+                'user_id' => auth()->user()->id,
+                'title' => $this->title,
+                'category' => $this->category,
+                'price' => intval(str_replace(".", "", $this->price)),
+                'rights' => $this->rights,
+                'certificate' => $this->certificate,
+                'owner' => $this->owner,
+                'area' => $this->area,
+                'location' => $this->location,
+                'description' => $this->description,
+                'photo' => $foto,
+                'confirm' => 0,
+                'status' => 'ready',
+            ];
+            Post::updateOrCreate(['id' => $this->idPost], $data);
+            $this->dispatchBrowserEvent(
+                'notyf:success',
+                [
+                    'type' => 'success',
+                    'message' => 'Berhasil Memasang Iklan',
+                ]
+            );
+            $this->clearVar();
+        }
     }
     public function render()
     {

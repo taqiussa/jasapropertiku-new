@@ -19,9 +19,12 @@ use App\Http\Controllers\MyUserController;
 Route::get('/', function () {
     return view('post.posts');
 });
-
-Route::resource('user', MyUserController::class);
-Route::resource('posts', PostController::class);
-Route::get('/admin', [AdminController::class,'index'])->name('admin');
-Route::get('/admin/{slug}', [AdminController::class,'show'])->name('admin.detail');
 Auth::routes();
+Route::middleware(['auth'])->group(function(){
+    Route::middleware(['role:Admin'])->group(function(){
+        Route::get('/admin', [AdminController::class,'index'])->name('admin');
+        Route::get('/admin/{slug}', [AdminController::class,'show'])->name('admin.detail');
+    });
+    Route::resource('user', MyUserController::class);
+});
+Route::resource('posts', PostController::class);
